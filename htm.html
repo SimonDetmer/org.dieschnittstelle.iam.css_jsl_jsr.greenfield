@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>IAM Greenfield</title>
+    <title>SoundGeKlaut</title>
     <!-- add style -->
     <link rel="stylesheet" href="css/css.css"/>
     <!-- add interaction control -->
@@ -15,5 +15,162 @@
     <script type="application/javascript" src="js/lib/xhr.js"></script>
 </head>
 <body>
+<article id="maincontent" class="listview">
+    <header class="header">
+        <button class="imgbutton hamburger" ></button>
+        <!-- <button class="imgbutton toggle-listeners" onclick="toggleListeners()"></button>  -->
+        <h1>Medien</h1>
+        <button class="imgbutton switchview" onclick="changeView()"></button>
+        <button class="imgbutton new-item" disabled="disabled"></button>
+    </header>
+    <main>
+        <div class="puffer"></div>
+        <ul>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/donuts.jpg" alt="Donuts">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">09.04.2022</a>
+                    </div>
+                    <a class="title">Donuts</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/80s.jpg" alt="80s">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">10.04.2022</a>
+                    </div>
+                    <a class="title">80s</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/drugs.jpg" alt="Drugs">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">11.04.2022</a>
+                    </div>
+                    <a class="title">Drugs</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/dumbbell.jpg" alt="Dumbbell">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">12.04.2022</a>
+                    </div>
+                    <a class="title">Dumbbell</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/elevator.jpg" alt="Elevator">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">13.04.2022</a>
+                    </div>
+                    <a class="title">Elevator</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/grillz.jpg" alt="Grillz">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">14.04.2022</a>
+                    </div>
+                    <a class="title">Grillz</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/ice.jpg" alt="Ice">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">15.04.2022</a>
+                    </div>
+                    <a class="title">Ice</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="recordpiccontainer">
+                    <img class="recordpic" src="./css/img/Cover/small/whiskey.jpg" alt="Whiskey">
+                </div>
+                <div class="recordcontainer">
+                    <div class="recordheader">
+                        <a class="source">www.unsplash.com</a>
+                        <a class="date">15.04.2022</a>
+                    </div>
+                    <a class="title">Whiskey</a>
+                    <div class="recordfooter">
+                        <div class="tagcontainer"><button class="playbutton" ></button><a class="tags">0</a>
+                        </div>
+                        <button class="vertoptions"></button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </main>
+    <footer class="footer">
+        <button class="imgbutton logout" ></button>
+        <button class="imgbutton refresh"></button>
+    </footer>
+    <dialog class="toast" open>
+        lorem ipsum
+    </dialog>
+</article>
 </body>
 </html>
