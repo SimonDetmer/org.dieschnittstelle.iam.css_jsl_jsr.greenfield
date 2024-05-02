@@ -1,9 +1,15 @@
 /* variable declarations */
 :root {
-    --myapp-color-background: white;
+    --myapp-color-background: limegreen;
+    --myapp-header-height: 60px;
+    --myapp-footer-height: 50px;
     --myapp-color-separator: rgb(120,120,120);
     --myapp-color-main: white;
-    --myapp-color-header: white;
+    --myapp-color-header: rgb(60,60,60);
+    --myapp-color-footer: rgb(15,15,15);
+    --myapp-imgbutton-size: 30px;
+    --myapp-imgbutton-imgsize: 30px;
+    --myapp-height-listitem: 100px;
 }
 
 
@@ -35,13 +41,12 @@ header, footer, li {
 
 .header {
     background-color: var(--myapp-color-header);
-    height: 50px;
+    height: var(--myapp-header-height);
     width: 100%;
     max-width: 100%;
     line-height: 50px;
     align-items: center;
     box-shadow: 0px 5px 6px gray;
-    position:fixed;
     z-index: 99;
 }
 
@@ -53,27 +58,28 @@ header, footer, li {
 header h1 {
     font-size: 18pt;
     margin: 0px;
+    line-height: var(--myapp-header-height);
     font-weight: normal;
     display: inline-block;
     text-transform: uppercase;
 }
-
+/*
 .puffer {
     height: 70px;
     width: 100%;
     background-color: #d6d6d6;
 }
-
+*/
 .imgbutton {
     background-color: transparent;
-    height: 30px;
-    width: 30px;
+    height: var(--myapp-imgbutton-imgsize);
+    width: var(--myapp-imgbutton-imgsize);
     margin-right: 10px;
     margin-left: 10px;
     padding: 0px;
     border: none;
     background-repeat: no-repeat;
-    background-size: 30px 30px;
+    background-size: var(--myapp-imgbutton-size) var(--myapp-imgbutton-size);
     display: inline-block;
     background-origin: content-box;
     background-position: center center;
@@ -171,10 +177,10 @@ header h1 {
     width: 100%;
     max-width: 100%;
     background-color: var(--myapp-color-main);
-    height: calc(100% - (50px));
-    height: -webkit-calc(100% - 50px);
+    height: calc(100vh - (var(--myapp-header-height) + var(--myapp-footer-height)));
+/*  height: -webkit-calc(100% - 50px);
     max-height: calc(100% - 50px);
-    max-height: -webkit-calc(100% - 50px);
+    max-height: -webkit-calc(100% - 50px); ---> evtl. löschen  */
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -210,10 +216,19 @@ ul:active {
 }
 
 .panelview li {
-    width: 33.33%;
+/*  width: 33.33%;
     font-size: 20pt;
     min-width: 100px;
-    position: relative;
+    position: relative; */
+    margin-left: var(--myapp-height-listitem);
+    margin-top: var(--myapp-height-listitem);
+    display: inline-block;
+    border: none;
+    /* Breite: (Gesamtbreite der Ansicht - ((Anzahl der Kacheln pro Zeile + 1) * Abstand)) / Anzahl der Kacheln pro Zeile */
+    width: calc((100vm - ((4 + 1) * var(--myapp-height-listitem))) / 4);
+    height: calc((100vm - ((4 + 1) * var(--myapp-height-listitem))) / 4);
+    padding: 0;
+    float: left;
 }
 
 .panelview li:before {
@@ -280,6 +295,7 @@ ul:active {
 }
 
 .listview .recordpic {
+    display: block;
     float: left;
     height: 100px;
     width: 100px;
@@ -375,11 +391,11 @@ dialog.toast {
 }
 */
 .footer {
-    height: 50px;
+    height: var(--myapp-footer-height);
     line-height: 50px;
     border-top: 1px solid;
     border-top-color: #ff860d;
-    background-color: white;
+    background-color: var(--myapp-color-footer);
     width: 100%;
     align-items: center;
     position:fixed;
