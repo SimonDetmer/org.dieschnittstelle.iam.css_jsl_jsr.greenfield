@@ -1,62 +1,96 @@
-/**
- * Created by master on 01.03.16.
- * Updated for W19, demonstrate alternatives for accessing server-side content and processing the result
- * jsr = "java script remote"
- */
-function loadNewItems() {
-    console.log("loadNewItems()");
+const loadJsr = () => {
+    const add = document.querySelector('.add');
+    const refresh = document.querySelector('.refresh')
+    const ul = document.querySelector('ul');
 
-    var mode = "arg"; // alternatives: arg, promise, fetch
+    xhr("GET", "data/listitems.json", null, function(xhrobj) {
+        var items = JSON.parse(xhrobj.responseText);
+        items.forEach((item) => addLiElementToList(item));
+    });
 
-    var callbackfunction = function (textContent) {
-        console.log("loaded textContent from server: " + textContent);
-        var jsonContent = JSON.parse(textContent);
+    const addLiElementToList = (obj) => {
 
-        // we assume jsonContent is an array and iterate over its members
-        jsonContent.forEach(function (contentItem) {
-            createListElementForContentItem(contentItem);
+        const li = document.createElement('li')
+
+        const img = document.createElement('img')
+        img.src = obj.src
+
+        const h3 = document.createElement('h3')
+        h3.textContent = obj.owner;
+
+        const h5 = document.createElement('h5')
+        h5.textContent = obj.numOfTags;
+
+        const h4 = document.createElement('h4')
+        h4.textContent = obj.added;
+
+        const h2 = document.createElement('h2')
+        h2.textContent = obj.title;
+
+        const editButton = document.createElement('button');
+        editButton.classList.add('imgbutton', 'edit')
+        editButton.textContent = 'edit'
+
+        const playButton = document.createElement('button');
+        playButton.classList.add('imgbutton', 'play')
+        playButton.textContent = 'play'
+
+        li.appendChild(img);
+        li.appendChild(h3);
+        li.appendChild(h5);
+        li.appendChild(h4);
+        li.appendChild(h2);
+        li.appendChild(playButton)
+        li.appendChild(editButton)
+
+        li.onclick = (e) => {
+            e.stopPropagation();
+            alert(getLiTitle(li))
+        }
+
+        editButton.onclick = (e) => {
+            e.stopPropagation();
+            if (confirm(getLiTitle(li) + '\n' + getLiOwner(li))) {
+                li.remove()
+            }
+        }
+
+        ul.appendChild(li);
+    }
+
+    const getLiTitle = (li) => {
+        return li.getElementsByTagName("h2")[0].textContent;
+    }
+
+    const getLiOwner = (li) => {
+        return li.getElementsByTagName("h3")[0].textContent;
+    }
+
+
+    refresh.onclick = () => {
+        while (ul.childNodes.length) {
+            ul.removeChild(ul.lastChild);
+        }
+
+        xhr("GET", "data/listitems.json", null, function(xhrobj) {
+            var items = JSON.parse(xhrobj.responseText);
+            items.forEach((item) => addLiElementToList(item));
         });
-    }
+    };
 
-    console.log("mode: " + mode);
-
-    const errormsg = "got error status accessing server-side data: ";
-
-    if (mode == "promise") {
-        xhr("GET", "data/listitems.json", null)
-            .then(xhr => callbackfunction(xhr.responseText),
-                xhr => alert(errormsg + xhr.status));
-    }
-    else if (mode == "fetch") {
-        // note that the text() method on the response object returns a promise itself
-        dofetch("GET", "data/listitems.json")
-            .then(response => response.text(),
-                response => alert(errormsg + response.status))
-            .then(txt => {
-                if (txt) {
-                    callbackfunction(txt);
-                }
-            });
-    }
-    else {
-        // we initiate an xmlhttprequest and read out its body
-        xhr("GET", "data/listitems.json", null,
-            xhr => callbackfunction(xhr.responseText),
-            xhr => alert(errormsg + xhr.status));
-    }
-
+    add.onclick = () => {
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.getMonth() + 1;
+        const year = today.getFullYear();
+        addLiElementToList({
+            title: "New Element",
+            added: `${day}.${month}.${year}`,
+            src: "https://placeimg.com/100/100",
+            owner: "user",
+            numOfTags: "4",
+        });
+    };
 }
 
-function createListElementForContentItem(item) {
-
-    var li = document.createElement("li");
-    li.textContent = item.title;
-    var button = document.createElement("button");
-    li.appendChild(button);
-    button.classList.add("edit-item");
-    button.classList.add("imgbutton");
-
-    // add the element to the list
-    document.getElementsByTagName("ul")[0].appendChild(li);
-
-}
+window.addEventListener('load', loadJsr)
