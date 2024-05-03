@@ -15,7 +15,7 @@
     --myapp-color-lines: rgb(120, 120, 120);
     --myapp-size-img: 80px;
     --myapp-size-img-tiles: 100px;
-    --myapp-default-space: 4px;
+    --myapp-default-space: 10px;
 }
 
 html,
@@ -37,7 +37,7 @@ body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    box-sizing: border-box;
+/*    box-sizing: border-box; */
 }
 
 /* Überschriften */
@@ -129,7 +129,7 @@ footer .imgbutton {
 
 .menu {
     background-image: url("./img/png/menu_FILL0_wght400_GRAD0_opsz24.png");
-    margin-left: -11px;
+    margin-left: -13px;
 }
 
 .add {
@@ -143,15 +143,15 @@ footer .imgbutton {
 .edit {
     background-image: url("./img/png/more_vert_FILL0_wght400_GRAD0_opsz24.png");
     position: absolute;
-    top: 45px;
-    right: 7px;
+    right: 0;
+    bottom: 0;
 }
 
 .play {
     background-image: url("./img/png/play_arrow_FILL0_wght400_GRAD0_opsz24.png");
     position: absolute;
-    top: 35px;
-    left: 95px;
+    top: 40px;
+    left: 90px;
     background-size: 30%;
 }
 
@@ -182,7 +182,7 @@ main li {
     position: relative;
     height: var(--myapp-height-listitem);
     line-height: var(--myapp-height-listitem);
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 0;
     font-size: 12pt;
     border-bottom: 1px solid #e4e4e4;
@@ -214,7 +214,7 @@ main h4 {
     position: absolute;
     display: inline-block;
     bottom: 33px;
-    right: 33px;
+    right: 10px;
     font-weight: normal;
     margin: 0;
     font-size: 10pt;
@@ -224,7 +224,7 @@ main h4 {
 main h5 {
     position: absolute;
     display: inline-block;
-    top: 15px;
+    top: 20px;
     left: 127px;
     font-weight: normal;
     margin: 0;
@@ -236,13 +236,18 @@ main li img {
     height: var(--myapp-size-img);
     width: var(--myapp-size-img);
     object-fit: cover;
-    margin-top: calc((var(--myapp-height-listitem) - var(--myapp-size-img)) / 2);
+    margin-top: 10px;
     margin-right: 10px;
+    /*
+    margin-top: calc((var(--myapp-height-listitem) - var(--myapp-size-img)) / 2);
+    margin-right: calc((var(--myapp-height-listitem) - var(--myapp-size-img)) / 2);
+*/
 }
 
 /* kacheln */
 
 .tiles li {
+    position: relative;
     box-sizing: unset;
     margin-left: var(--myapp-default-space);
     margin-top: var(--myapp-default-space);
@@ -279,4 +284,17 @@ main li img {
 main.faded {
     opacity: 0;
     transition: opacity 2s;
+}
+
+/* media queries */
+/* Für mobile Geräte (Smartphones) */
+@media screen and (max-width: 767px) {
+    .tiles li {
+        width: calc((100vw - (3 + 1) * var(--myapp-default-space)) / 3);
+        height: calc((100vw - (3 + 1) * var(--myapp-default-space)) / 3);
+    }
+}
+/* Für Tablets und kleinere Desktop-Bildschirme */
+@media screen and (min-width: 768px) {
+
 }
